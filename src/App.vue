@@ -24,7 +24,7 @@ export default {
       apiKey: '220d2b0d1afd421bec306147ec0fae6c',
       films: [],
       searchField: '',
-      gg: ''
+  
 
     }
   },

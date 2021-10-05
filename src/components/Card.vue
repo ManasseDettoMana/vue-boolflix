@@ -22,7 +22,7 @@ export default {
         }
     },
     methods: {
-        starClick:function(){
+        starClick: function(){
             this.isActive=!this.isActive;
         }
     }
@@ -34,13 +34,15 @@ export default {
 .carta{
     background-color: rgb(65, 65, 65);
     color: white;
+    i{
+        transform: scale(1.5)    
+    }
     img{
         height: 50px;
         width: 50px;
     }
     .active{
         color: goldenrod;
-        // background-color: goldenrod;
     }
 
 }

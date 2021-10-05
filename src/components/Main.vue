@@ -2,7 +2,7 @@
     <main>
         <h2>Risultato della ricerca</h2>
         <div class="container">
-            <div class="row">
+            <div class="row d-flex justify-content-between">
                 <Card v-for="movie in movies" :key="movie.id" :movie="movie"/>
             </div>
         </div>

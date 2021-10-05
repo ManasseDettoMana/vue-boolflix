@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @searching="searchMovie"/>
     <Main :movies="films"/>
   </div>
 </template>
@@ -20,10 +20,10 @@ export default {
   },
   data: function(){
     return{
-        apiUrl: 'https://api.themoviedb.org/3/search/movie',
-        apiKey: '220d2b0d1afd421bec306147ec0fae6c',
-        films: [],
-        searchField: '',
+      apiUrl: 'https://api.themoviedb.org/3/search/movie',
+      apiKey: '220d2b0d1afd421bec306147ec0fae6c',
+      films: [],
+      searchField: '',
 
     }
   },
@@ -40,7 +40,6 @@ export default {
           }).then(
           (risultato) =>{
             this.films = [...risultato.data.results];
-            console.log('array films', this.films);
           })
           .catch(
             (errore)=>{
@@ -60,6 +59,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  // margin-top: 60px;
 }
 </style>

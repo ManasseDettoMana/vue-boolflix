@@ -1,17 +1,54 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header />
+    <Main :movies="films"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
+import Main from './components/Main.vue'
+import Header from './components/Header.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Main,
+    Header,
+
+  },
+  data: function(){
+    return{
+        apiUrl: 'https://api.themoviedb.org/3/search/movie',
+        apiKey: '220d2b0d1afd421bec306147ec0fae6c',
+        films: [],
+        searchField: '',
+
+    }
+  },
+  methods:{
+    searchMovie: function(searchField){
+      console.log(searchField);
+      if(searchField.length > 1){
+
+        axios.get(this.apiUrl,{
+          params: {
+            api_key: this.apiKey,
+            query: searchField,
+          }
+          }).then(
+          (risultato) =>{
+            this.films = [...risultato.data.results];
+            console.log('array films', this.films);
+          })
+          .catch(
+            (errore)=>{
+              console.warn("errore nella richiesta dell'API: ", errore);
+            }
+          )
+      }
+    },
   }
 }
 </script>
